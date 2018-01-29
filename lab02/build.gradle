@@ -1,2 +1,9 @@
-#yolo
+apply plugin: 'java'
 
+repositories{
+    mavenCentral();
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-csv:1.5'
+}

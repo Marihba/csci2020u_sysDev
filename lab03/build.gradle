@@ -1,0 +1,30 @@
+// to apply plugin for a specific language
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+	attributes    'Main-Class' : 'CSVDemo.java',
+		      'Implementation-Title' : 'CSVDemo-Gradle',
+		      'Implementation-Version' : version
+    }
+}
+
+repositories{
+    mavenCentral();
+}
+
+/* consists of three parts separated by ':'
+- name of organization
+- name of artifact (filename)
+- version number of artifact
+*/
+dependencies {
+    compile 'org.apache.commons:commons-csv:1.5'
+}
+
+task(run, dependsOn: 'classes', type: JavaExec) {
+    main = 'CSVDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
